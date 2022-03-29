@@ -83,8 +83,6 @@ const displayMovements = function (movements, sort = false) {
   })
 }
 
-displayMovements(account1.movements)
-
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0)
   labelBalance.textContent = `${acc.balance}€`
@@ -120,6 +118,19 @@ const createUsernames = function (accs) {
       .map((name) => name[0])
       .join('')
   })
+}
+
+createUsernames(accounts)
+
+const updateUI = function (acc) {
+  // Display movements
+  displayMovements(acc.movements)
+
+  // Display balance
+  calcDisplayBalance(acc)
+
+  // Display summary
+  calcDisplaySummary(acc)
 }
 
 // Manipuladores de eventos
